@@ -1,16 +1,14 @@
 const Queue = require('../queue/Queue');
 const store = require('../store');
 
-// Set up initial data.
-// --------------------
-
-const dogs = new Queue();
-
-store.dogs.forEach(dog => dogs.enqueue(dog));
-
-// --------------------
+let dogs;
 
 module.exports = {
+  reset() {
+    dogs = new Queue();
+    store.dogs.forEach(dog => dogs.enqueue(dog));
+  },
+
   get() {
     return dogs.show();
   },

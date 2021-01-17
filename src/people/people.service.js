@@ -1,16 +1,16 @@
 const Queue = require('../queue/Queue');
 const store = require('../store');
+const Cats = require('../cat/cat.service');
+const Dogs = require('../dog/dog.service');
 
-// Set up initial data.
-// --------------------
-
-const people = new Queue();
-store.people.forEach(person => people.enqueue(person));
-
-// --------------------
+let people;
 
 module.exports = {
-  get() {
+  get () {
+    people = new Queue();
+    store.people.forEach(person => people.enqueue(person));
+    Cats.reset();
+    Dogs.reset();
     return people.all();
   },
 
@@ -20,7 +20,6 @@ module.exports = {
   },
 
   dequeue() {
-    console.log(people.all());
     return people.dequeue();
   }
 };

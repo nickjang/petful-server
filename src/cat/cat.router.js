@@ -12,7 +12,6 @@ router.get('/', (req, res) => {
 
 router.delete('/', json, (req, res) => {
   const person = People.dequeue();
-  console.log(person);
   const cat = Cats.dequeue();
   return res
     .status(200)

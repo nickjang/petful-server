@@ -16,7 +16,6 @@ class Queue {
     const value = this.first.value;
     this.first = this.first.next;
     if (!this.first) this.last = null;
-    console.log('t',value);
     return value;
   }
 
